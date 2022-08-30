@@ -10,14 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:ruby-multitool.helloWorld"
+    "onCommand:ruby-multitool.convertSingleKey"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "ruby-multitool.helloWorld",
-        "title": "Hello World"
+        "command": "ruby-multitool.convertSingleKey",
+        "title": "Ruby Multitool: Convert Single Key"
       }
     ]
   },
