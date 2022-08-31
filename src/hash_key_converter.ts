@@ -12,18 +12,51 @@ export class HashKeyConverter {
     );
   }
 
-  _convertHashKey(lineText: string, cursorPosition: number, regexp: RegExp, keyTransformation: Function): string | undefined {
+  convertAllKeys(text: string): string {
+    let newText = this._convertAllKeysToNewSyntax(text);
+    if (newText === text) {
+      newText = this._convertAllKeysToOldSyntax(text);
+    }
+
+    return newText;
+  }
+
+  _convertAllKeysToNewSyntax(text: string): string {
+    return this._splitTextToFragmentsAndConvert(text, (fragment: string): string | undefined => {
+      return this._convertRegularHashRocketKey(fragment, 0, true) || this._convertFancyHashRocketKey(fragment, 0, true);
+    });
+  }
+
+  _convertAllKeysToOldSyntax(text: string): string {
+    return this._splitTextToFragmentsAndConvert(text, (fragment: string): string | undefined => {
+      return this._convertNewHashRocketKey(fragment, 0, true);
+    });
+  }
+
+  _splitTextToFragmentsAndConvert(text: string, convert: Function): string {
+    return text.split("\n").map((line: string): string => {
+      return line.split(',').map((fragment: string): string => {
+        return convert(fragment) || fragment;
+      }).join(',');
+    }).join('\n');
+  }
+
+  _convertHashKey(lineText: string, cursorPosition: number, regexp: RegExp, keyTransformation: Function, skipCursorPositionCheck = false): string | undefined {
     let matches = Array
       .from(lineText.matchAll(regexp))
       .map((matchedElement: any) => {
-        let wordUnderTheCursor = matchedElement[2] || matchedElement[3];
-        let startOfTheWordPosition = lineText.indexOf(wordUnderTheCursor);
-        if (lineText[startOfTheWordPosition - 1] === ':') {
-          startOfTheWordPosition--;
+        if (skipCursorPositionCheck) {
+          matchedElement.isCursorInMatchedWord = true;
+        } else {
+          let wordUnderTheCursor = matchedElement[2] || matchedElement[3];
+          let startOfTheWordPosition = lineText.indexOf(wordUnderTheCursor);
+          if (lineText[startOfTheWordPosition - 1] === ":") {
+            startOfTheWordPosition--;
+          }
+          let endOfTheWordPosition = startOfTheWordPosition + wordUnderTheCursor.length;
+          matchedElement.isCursorInMatchedWord = startOfTheWordPosition <= cursorPosition &&
+            cursorPosition <= endOfTheWordPosition;
         }
-        let endOfTheWordPosition = startOfTheWordPosition + wordUnderTheCursor.length;
-        matchedElement.isCursorInMatchedWord = startOfTheWordPosition <= cursorPosition &&
-          cursorPosition <= endOfTheWordPosition;
 
         return matchedElement;
       })
@@ -38,30 +71,33 @@ export class HashKeyConverter {
     }
   }
 
-  _convertRegularHashRocketKey(lineText: string, cursorPosition: number): string | undefined {
+  _convertRegularHashRocketKey(lineText: string, cursorPosition: number, skipCursorPositionCheck = false): string | undefined {
     return this._convertHashKey(
       lineText,
       cursorPosition,
       REGURAL_HASH_ROCKET_SYNTAX_REGEXP,
-      (key: string): string => `${key}: `
+      (key: string): string => `${key}: `,
+      skipCursorPositionCheck
     );
   }
 
-  _convertFancyHashRocketKey(lineText: string, cursorPosition: number): string | undefined {
+  _convertFancyHashRocketKey(lineText: string, cursorPosition: number, skipCursorPositionCheck = false): string | undefined {
     return this._convertHashKey(
       lineText,
       cursorPosition,
       FANCY_HASH_ROCKET_SYNTAX_REGEXP,
-      (key: string): string => `${key}: `
+      (key: string): string => `${key}: `,
+      skipCursorPositionCheck
     );
   }
 
-  _convertNewHashRocketKey(lineText: string, cursorPosition: number): string | undefined {
+  _convertNewHashRocketKey(lineText: string, cursorPosition: number, skipCursorPositionCheck = false): string | undefined {
     return this._convertHashKey(
       lineText,
       cursorPosition,
       NEW_HASH_SYNTAX_REGEXP,
-      (key: string): string => `:${key} => `
+      (key: string): string => `'${key}' => `,
+      skipCursorPositionCheck
     );
   }
 }

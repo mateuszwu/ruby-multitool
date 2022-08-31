@@ -10,8 +10,8 @@ suite("#convertSingleKey", () => {
     { actualValue: "{ \"foo\"=> value }", expectedValue: "{ foo: value }", cursorAtWord: 'foo' },
     { actualValue: "{ :'foo_#{1}' => value }", expectedValue: "{ 'foo_#{1}': value }", cursorAtWord: 'foo' },
     { actualValue: "{ :'foo 1' => value }", expectedValue: "{ 'foo 1': value }", cursorAtWord: 'foo' },
-    { actualValue: "{ foo: value }", expectedValue: "{ :foo => value }", cursorAtWord: 'foo'},
-    { actualValue: "{ 'foo': 'value', }", expectedValue: "{ :foo => 'value', }", cursorAtWord: 'foo' },
+    { actualValue: "{ foo: value }", expectedValue: "{ 'foo' => value }", cursorAtWord: 'foo'},
+    { actualValue: "{ 'foo': 'value', }", expectedValue: "{ 'foo' => 'value', }", cursorAtWord: 'foo' },
     { actualValue: '{ :"foo_#{1}" => value }', expectedValue: '{ "foo_#{1}": value }', cursorAtWord: 'foo' },
     { actualValue: "{ :foo => 'v', :baz => 'f', :bar => 'g' }", expectedValue: "{ :foo => 'v', baz: 'f', :bar => 'g' }", cursorAtWord: 'baz' },
     {
@@ -21,7 +21,7 @@ suite("#convertSingleKey", () => {
     },
     {
       actualValue: "{ foo => 1, bar: 2, :baz => 3, 'biz' => 4, :'buf' => 5 }",
-      expectedValue: "{ foo => 1, :bar => 2, :baz => 3, 'biz' => 4, :'buf' => 5 }",
+      expectedValue: "{ foo => 1, 'bar' => 2, :baz => 3, 'biz' => 4, :'buf' => 5 }",
       cursorAtWord: 'bar'
     },
     {
@@ -59,6 +59,45 @@ suite("#convertSingleKey", () => {
       let result = new HashKeyConverter().convertSingleKey(actualValue, characterNumber);
 
       assert(result === actualValue, `${result} === ${actualValue}`);
+    });
+  });
+});
+
+suite("#convertAllKeys", () => {
+  [
+    {
+      actualValue: "{ 'foo' => value, 'baz' => value }",
+      expectedValue: "{ foo: value, baz: value }",
+    },
+    {
+      actualValue: `{
+        'foo' => value,
+        baz: value, bar => value,
+        :'biz' => value
+      }`,
+      expectedValue: `{
+        foo: value,
+        baz: value, bar => value,
+        biz: value
+      }`,
+    },
+    {
+      actualValue: `{
+        foo: value,
+        baz: value, bar => value,
+        biz: value
+      }`,
+      expectedValue: `{
+        'foo' => value,
+        'baz' => value, bar => value,
+        'biz' => value
+      }`,
+    },
+  ].forEach(({ actualValue, expectedValue }) => {
+    test(`convert ${actualValue} to: ${expectedValue}`, () => {
+      let result = new HashKeyConverter().convertAllKeys(actualValue);
+
+      assert(result === expectedValue, `${result} === ${expectedValue}`);
     });
   });
 });
