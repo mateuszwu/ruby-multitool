@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import { HashKeyConverter } from "../../hash_key_converter";
+import HashKeyConverter from "../../../../plugins/hash_key_converter";
 
 suite("#convertSingleKey", () => {
   [

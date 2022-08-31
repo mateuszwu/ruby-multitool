@@ -2,7 +2,7 @@ const REGURAL_HASH_ROCKET_SYNTAX_REGEXP = new RegExp(/(:['"]?([\w\d_]+)['"]?\s*=
 const FANCY_HASH_ROCKET_SYNTAX_REGEXP = new RegExp(/(:?(['"][\w\d_#\{\}\s]+["'])\s*=>\s*)/g);
 const NEW_HASH_SYNTAX_REGEXP = new RegExp(/(['"]?([\w\d_]+)['"]?:\s+)/g);
 
-export class HashKeyConverter {
+export default class HashKeyConverter {
   convertSingleKey(lineText: string, cursorPosition: number): string {
     return (
       this._convertRegularHashRocketKey(lineText, cursorPosition) ||
