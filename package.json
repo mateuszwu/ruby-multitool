@@ -11,7 +11,10 @@
   ],
   "activationEvents": [
     "onCommand:ruby-multitool.convertSingleKey",
-    "onCommand:ruby-multitool.convertAllKeys"
+    "onCommand:ruby-multitool.convertAllKeys",
+
+    "onCommand:ruby-multitool.moveRight",
+    "onCommand:ruby-multitool.moveLeft"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -23,6 +26,15 @@
       {
         "command": "ruby-multitool.convertAllKeys",
         "title": "Ruby Multitool: Convert All Keys"
+      },
+
+      {
+        "command": "ruby-multitool.moveRight",
+        "title": "Ruby Multitool: Move Key Value Right"
+      },
+      {
+        "command": "ruby-multitool.moveLeft",
+        "title": "Ruby Multitool: Move Key Value Left"
       }
     ]
   },

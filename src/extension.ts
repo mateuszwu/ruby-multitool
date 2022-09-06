@@ -3,6 +3,7 @@
 import { ReadableStreamDefaultController } from 'stream/web';
 import * as vscode from 'vscode';
 import { convertSingleKey, convertAllKeys } from './plugins/hash_key_converter/subscription';
+import { moveRight, moveLeft } from './plugins/params_sidemove/subscription';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -17,6 +18,9 @@ export function activate(context: vscode.ExtensionContext) {
   // The commandId parameter must match the command field in package.json
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.convertSingleKey', convertSingleKey));
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.convertAllKeys', convertAllKeys));
+
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.moveRight', moveRight));
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.moveLeft', moveLeft));
 }
 // this method is called when your extension is deactivated
 export function deactivate() {}
