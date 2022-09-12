@@ -42,18 +42,18 @@ export default class HashKeyConverter {
   }
 
   _convertHashKey(lineText: string, cursorPosition: number, regexp: RegExp, keyTransformation: Function, skipCursorPositionCheck = false): string | undefined {
-    let matches = Array
+    const matches = Array
       .from(lineText.matchAll(regexp))
       .map((matchedElement: any) => {
         if (skipCursorPositionCheck) {
           matchedElement.isCursorInMatchedWord = true;
         } else {
-          let wordUnderTheCursor = matchedElement[2] || matchedElement[3];
+          const wordUnderTheCursor = matchedElement[2] || matchedElement[3];
           let startOfTheWordPosition = lineText.indexOf(wordUnderTheCursor);
           if (lineText[startOfTheWordPosition - 1] === ":") {
             startOfTheWordPosition--;
           }
-          let endOfTheWordPosition = startOfTheWordPosition + wordUnderTheCursor.length;
+          const endOfTheWordPosition = startOfTheWordPosition + wordUnderTheCursor.length;
           matchedElement.isCursorInMatchedWord = startOfTheWordPosition <= cursorPosition &&
             cursorPosition <= endOfTheWordPosition;
         }
@@ -61,11 +61,11 @@ export default class HashKeyConverter {
         return matchedElement;
       })
       .filter((x) => x.isCursorInMatchedWord);
-    let bestMatch = matches[0];
+    const bestMatch = matches[0];
 
     if (bestMatch !== undefined) {
-      let oldKeySyntax = bestMatch[1];
-      let key = bestMatch[2] || bestMatch[3];
+      const oldKeySyntax = bestMatch[1];
+      const key = bestMatch[2] || bestMatch[3];
 
       return lineText.replace(oldKeySyntax, keyTransformation(key));
     }

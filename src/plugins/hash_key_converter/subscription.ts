@@ -4,16 +4,16 @@ import HashKeyConverter from '.';
 export function convertSingleKey() {
   const activeTextEditor = vscode.window.activeTextEditor;
   if (activeTextEditor !== undefined) {
-    let cursorPosition = activeTextEditor.selection.active;
-    let oldLineText = activeTextEditor.document.lineAt(
+    const cursorPosition = activeTextEditor.selection.active;
+    const oldLineText = activeTextEditor.document.lineAt(
       activeTextEditor.selection.active
     ).text;
-    let newLineText = new HashKeyConverter().convertSingleKey(
+    const newLineText = new HashKeyConverter().convertSingleKey(
       oldLineText,
       cursorPosition.character
     );
     activeTextEditor.edit((textEditor) => {
-      let selection = new vscode.Selection(
+      const selection = new vscode.Selection(
         new vscode.Position(cursorPosition.line, 0),
         new vscode.Position(cursorPosition.line, oldLineText.length)
       );
@@ -27,13 +27,13 @@ export function convertAllKeys() {
   if (activeTextEditor === undefined) {
     return;
   }
-  let cursorPosition = activeTextEditor.selection.active;
+  const cursorPosition = activeTextEditor.selection.active;
   if (activeTextEditor?.selection.isEmpty) {
-    let expandSelectionAndConvert = (iteration = 0) => {
+    const expandSelectionAndConvert = (iteration = 0) => {
       vscode.commands.executeCommand('editor.action.smartSelect.expand').then(() => {
-        let text = activeTextEditor.document.getText(activeTextEditor.selection);
+        const text = activeTextEditor.document.getText(activeTextEditor.selection);
         if (text.trim()[0] === '{' || text.trim()[0] === '(') {
-          let newLineText = new HashKeyConverter().convertAllKeys(text);
+          const newLineText = new HashKeyConverter().convertAllKeys(text);
           activeTextEditor.edit((textEditor) => {
             textEditor.replace(activeTextEditor.selection, newLineText);
           });
@@ -50,8 +50,8 @@ export function convertAllKeys() {
 
     expandSelectionAndConvert();
   } else {
-    let text = activeTextEditor.document.getText(activeTextEditor.selection);
-    let newLineText = new HashKeyConverter().convertAllKeys(text);
+    const text = activeTextEditor.document.getText(activeTextEditor.selection);
+    const newLineText = new HashKeyConverter().convertAllKeys(text);
     activeTextEditor.edit((textEditor) => {
       textEditor.replace(activeTextEditor.selection, newLineText);
     });
