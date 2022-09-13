@@ -16,7 +16,12 @@
     "onCommand:ruby-multitool.moveRight",
     "onCommand:ruby-multitool.moveLeft",
 
-    "onCommand:ruby-multitool.jumpToLastMigration"
+    "onCommand:ruby-multitool.jumpToLastMigration",
+
+    "onCommand:ruby-multitool.foldAllDescribes",
+    "onCommand:ruby-multitool.foldAllContexts",
+    "onCommand:ruby-multitool.foldAllIts"
+
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -41,6 +46,18 @@
       {
         "command": "ruby-multitool.jumpToLastMigration",
         "title": "Ruby Multitool: Jump to last created RoR migration"
+      },
+      {
+        "command": "ruby-multitool.foldAllDescribes",
+        "title": "Ruby Multitool: Fold all describes"
+      },
+      {
+        "command": "ruby-multitool.foldAllContexts",
+        "title": "Ruby Multitool: Fold all contexts"
+      },
+      {
+        "command": "ruby-multitool.foldAllIts",
+        "title": "Ruby Multitool: Fold all its"
       }
     ]
   },

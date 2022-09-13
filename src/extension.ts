@@ -5,6 +5,7 @@ import * as vscode from 'vscode';
 import { convertSingleKey, convertAllKeys } from './plugins/hash_key_converter/subscription';
 import { moveRight, moveLeft } from './plugins/params_sidemove/subscription';
 import { jumpToLastMigration } from './plugins/jump_to_last_migration/subscription';
+import { foldAllDescribes, foldAllContexts, foldAllIts } from './plugins/fold_all/subscription';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -23,6 +24,10 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.moveLeft', moveLeft));
 
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.jumpToLastMigration', jumpToLastMigration));
+
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.foldAllDescribes', foldAllDescribes));
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.foldAllContexts', foldAllContexts));
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.foldAllIts', foldAllIts));
 }
 // this method is called when your extension is deactivated
 export function deactivate() {}
