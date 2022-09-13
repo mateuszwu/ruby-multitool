@@ -14,7 +14,9 @@
     "onCommand:ruby-multitool.convertAllKeys",
 
     "onCommand:ruby-multitool.moveRight",
-    "onCommand:ruby-multitool.moveLeft"
+    "onCommand:ruby-multitool.moveLeft",
+
+    "onCommand:ruby-multitool.jumpToLastMigration"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -35,6 +37,10 @@
       {
         "command": "ruby-multitool.moveLeft",
         "title": "Ruby Multitool: Move Key Value Left"
+      },
+      {
+        "command": "ruby-multitool.jumpToLastMigration",
+        "title": "Ruby Multitool: Jump to last created RoR migration"
       }
     ]
   },

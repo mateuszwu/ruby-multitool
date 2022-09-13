@@ -4,11 +4,11 @@ import { ReadableStreamDefaultController } from 'stream/web';
 import * as vscode from 'vscode';
 import { convertSingleKey, convertAllKeys } from './plugins/hash_key_converter/subscription';
 import { moveRight, moveLeft } from './plugins/params_sidemove/subscription';
+import { jumpToLastMigration } from './plugins/jump_to_last_migration/subscription';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated
   console.log('Congratulations, your extension "ruby-multitool" is now active!');
@@ -21,6 +21,8 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.moveRight', moveRight));
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.moveLeft', moveLeft));
+
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.jumpToLastMigration', jumpToLastMigration));
 }
 // this method is called when your extension is deactivated
 export function deactivate() {}
