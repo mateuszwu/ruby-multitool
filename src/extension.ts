@@ -7,6 +7,7 @@ import { moveRight, moveLeft } from './plugins/params_sidemove/subscription';
 import { jumpToLastMigration } from './plugins/jump_to_last_migration/subscription';
 import { foldAllDescribes, foldAllContexts, foldAllIts } from './plugins/fold_all/subscription';
 import { openNotepad } from './plugins/open_notepad/subscription';
+import { copyAbsolutePathWithLineNumber, copyRelativePathWithLineNumber } from './plugins/copy_path_with_line_number/subscription';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -31,6 +32,9 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.foldAllIts', foldAllIts));
 
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.openNotepad', () => openNotepad(context)));
+
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.copyAbsolutePathWithLineNumber', copyAbsolutePathWithLineNumber));
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.copyRelativePathWithLineNumber', copyRelativePathWithLineNumber));
 }
 // this method is called when your extension is deactivated
 export function deactivate() {}

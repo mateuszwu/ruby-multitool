@@ -18,7 +18,9 @@
     "onCommand:ruby-multitool.foldAllDescribes",
     "onCommand:ruby-multitool.foldAllContexts",
     "onCommand:ruby-multitool.foldAllIts",
-    "onCommand:ruby-multitool.openNotepad"
+    "onCommand:ruby-multitool.openNotepad",
+    "onCommand:ruby-multitool.copyAbsolutePathWithLineNumber",
+    "onCommand:ruby-multitool.copyRelativePathWithLineNumber"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -58,6 +60,14 @@
       {
         "command": "ruby-multitool.openNotepad",
         "title": "Ruby Multitool: Open project notepad"
+      },
+      {
+        "command": "ruby-multitool.copyAbsolutePathWithLineNumber",
+        "title": "Ruby Multitool: Copy absolute path with line number"
+      },
+      {
+        "command": "ruby-multitool.copyRelativePathWithLineNumber",
+        "title": "Ruby Multitool: Copy relative path with line number"
       }
     ]
   },
