@@ -20,7 +20,9 @@
     "onCommand:ruby-multitool.foldAllIts",
     "onCommand:ruby-multitool.openNotepad",
     "onCommand:ruby-multitool.copyAbsolutePathWithLineNumber",
-    "onCommand:ruby-multitool.copyRelativePathWithLineNumber"
+    "onCommand:ruby-multitool.copyRelativePathWithLineNumber",
+    "onCommand:ruby-multitool.selectAroundBlock",
+    "onCommand:ruby-multitool.selectInsideBlock"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -68,6 +70,14 @@
       {
         "command": "ruby-multitool.copyRelativePathWithLineNumber",
         "title": "Ruby Multitool: Copy relative path with line number"
+      },
+      {
+        "command": "ruby-multitool.selectAroundBlock",
+        "title": "Ruby Multitool: Select around block you are currently in"
+      },
+      {
+        "command": "ruby-multitool.selectInsideBlock",
+        "title": "Ruby Multitool: Select inside block you are currently in"
       }
     ]
   },
@@ -83,6 +93,7 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
     "@types/glob": "^7.2.0",
     "@types/mocha": "^9.1.1",
     "@types/node": "16.x",
