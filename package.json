@@ -22,7 +22,9 @@
     "onCommand:ruby-multitool.copyAbsolutePathWithLineNumber",
     "onCommand:ruby-multitool.copyRelativePathWithLineNumber",
     "onCommand:ruby-multitool.selectAroundBlock",
-    "onCommand:ruby-multitool.selectInsideBlock"
+    "onCommand:ruby-multitool.selectInsideBlock",
+    "onCommand:ruby-multitool.selectAroundDefBlock",
+    "onCommand:ruby-multitool.selectInsideDefBlock"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -78,6 +80,14 @@
       {
         "command": "ruby-multitool.selectInsideBlock",
         "title": "Ruby Multitool: Select inside block you are currently in"
+      },
+      {
+        "command": "ruby-multitool.selectAroundDefBlock",
+        "title": "Ruby Multitool: Select around def block you are currently in"
+      },
+      {
+        "command": "ruby-multitool.selectInsideDefBlock",
+        "title": "Ruby Multitool: Select inside def block you are currently in"
       }
     ]
   },

@@ -3,6 +3,31 @@ import { RubyFileAnalyzer } from "../../../../plugins/select_block";
 import * as fse from "fs-extra";
 import * as vscode from "vscode";
 
+suite("#getDefUnderCursorPosition", () => {
+  test('returns "def" with body', async () => {
+    const rubyFileText = await fse.readFile(
+      "src/test/suite/plugins/select_block/ruby_file.rb",
+      "utf-8"
+    );
+    const currentCursorPosition = new vscode.Position(11, 0);
+
+    const result = new RubyFileAnalyzer().getDefUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition
+    );
+
+    assert.equal(result?.indentationLength, 6, "Indentation");
+    assert.deepEqual(result?.blockOpening, {
+      endCharacterPosition: 13,
+      line: 9,
+      startCharacterPosition: 6,
+      text: "def eaz",
+    });
+    assert.equal(result?.body.length, 50, "Body length");
+    assert.equal(result?.body[0], "        if true; 222 end");
+  });
+});
+
 suite("#getBlockUnderCursorPosition", () => {
   test(`returns a top 'module' with body`, async () => {
     const rubyFileText = await fse.readFile(

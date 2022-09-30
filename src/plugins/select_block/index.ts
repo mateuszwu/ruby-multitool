@@ -35,7 +35,7 @@ interface RubyBlockDetails {
   endCharacterPosition: number;
 }
 
-interface RubyBlock {
+export interface RubyBlock {
   indentationLength: number;
   blockOpening: RubyBlockDetails;
   body: string[];
@@ -51,6 +51,19 @@ export class RubyFileAnalyzer {
       const block = blocks[i];
 
       if (this._isCursorInsideTheBlock(cursorPosition, block)) {
+        return block;
+      }
+    }
+  }
+
+  getDefUnderCursorPosition(text: string, cursorPosition: vscode.Position): RubyBlock | undefined {
+    const lines = text.split("\n");
+    const blocks = this._analyze(lines);
+
+    for (let i = blocks.length - 1; i >= 0; i--) {
+      const block = blocks[i];
+
+      if (this._isCursorInsideTheDef(cursorPosition, block)) {
         return block;
       }
     }
@@ -163,6 +176,13 @@ export class RubyFileAnalyzer {
         block.blockOpening.line <= cursorPosition.line &&
         cursorPosition.line <= block.blockClosing.line
       )
+    );
+  }
+
+  _isCursorInsideTheDef(cursorPosition: vscode.Position, block: RubyBlock) {
+    return (
+      this._isCursorInsideTheBlock(cursorPosition, block) &&
+      block.blockOpening.text.match(BLOCK_DEF_REGEXP) !== null
     );
   }
 }
