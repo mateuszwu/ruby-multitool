@@ -24,7 +24,8 @@
     "onCommand:ruby-multitool.selectAroundBlock",
     "onCommand:ruby-multitool.selectInsideBlock",
     "onCommand:ruby-multitool.selectAroundDefBlock",
-    "onCommand:ruby-multitool.selectInsideDefBlock"
+    "onCommand:ruby-multitool.selectInsideDefBlock",
+    "onCommand:ruby-multitool.invertSelectionDirection"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -88,6 +89,10 @@
       {
         "command": "ruby-multitool.selectInsideDefBlock",
         "title": "Ruby Multitool: Select inside def block you are currently in"
+      },
+      {
+        "command": "ruby-multitool.invertSelectionDirection",
+        "title": "Ruby Multitool: Invert selection direction"
       }
     ]
   },
