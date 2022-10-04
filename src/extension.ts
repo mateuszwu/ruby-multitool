@@ -10,6 +10,7 @@ import { openNotepad } from './plugins/open_notepad/subscription';
 import { copyAbsolutePathWithLineNumber, copyRelativePathWithLineNumber } from './plugins/copy_path_with_line_number/subscription';
 import { selectAroundBlock, selectInsideBlock, selectAroundDefBlock, selectInsideDefBlock } from "./plugins/select_block/subscription";
 import { invertSelectionDirection } from './plugins/invert_selection_direction/subscription';
+import { extractToPrivateMethod } from './plugins/extract_to_method/subscription'
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -44,6 +45,8 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.selectInsideDefBlock', selectInsideDefBlock));
 
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.invertSelectionDirection', invertSelectionDirection));
+
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.extractToPrivateMethod', extractToPrivateMethod));
 }
 // this method is called when your extension is deactivated
 export function deactivate() {}

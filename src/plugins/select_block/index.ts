@@ -40,6 +40,7 @@ export interface RubyBlock {
   blockOpening: RubyBlockDetails;
   body: string[];
   blockClosing: RubyBlockDetails;
+  selections: vscode.Selection[]
 }
 
 export class RubyFileAnalyzer {
@@ -51,6 +52,18 @@ export class RubyFileAnalyzer {
       const block = blocks[i];
 
       if (this._isCursorInsideTheBlock(cursorPosition, block)) {
+        return block;
+      }
+    }
+  }
+  getClassUnderCursorPosition(text: string, cursorPosition: vscode.Position): RubyBlock | undefined {
+    const lines = text.split("\n");
+    const blocks = this._analyze(lines);
+
+    for (let i = blocks.length - 1; i >= 0; i--) {
+      const block = blocks[i];
+
+      if (this._isCursorInsideTheClass(cursorPosition, block)) {
         return block;
       }
     }
@@ -119,6 +132,7 @@ export class RubyFileAnalyzer {
       } as RubyBlockDetails,
       body: [],
       blockClosing: {} as RubyBlockDetails,
+      selections: [] as vscode.Selection[]
     };
   }
 
@@ -183,6 +197,13 @@ export class RubyFileAnalyzer {
     return (
       this._isCursorInsideTheBlock(cursorPosition, block) &&
       block.blockOpening.text.match(BLOCK_DEF_REGEXP) !== null
+    );
+  }
+
+  _isCursorInsideTheClass(cursorPosition: vscode.Position, block: RubyBlock) {
+    return (
+      this._isCursorInsideTheBlock(cursorPosition, block) &&
+      block.blockOpening.text.match(BLOCK_CLASS_REGEXP) !== null
     );
   }
 }
