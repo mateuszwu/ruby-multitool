@@ -24,7 +24,7 @@ const ALL_BLOCK_REGEXP = [
   BLOCK_BEGIN_REGEXP,
 ];
 const BLOCK_OPENING_REGEXP = new RegExp(`${INDENTATION_REGEXP}(${ALL_BLOCK_REGEXP.join("|")})`, "g");
-const SUPPORT_DO_REGEXP = /(^\s*.*)(?:do)$/g;
+const SUPPORT_DO_REGEXP = /(^\s*.*\s*)(unused_group)?(do[^\w]\s*\|.*\||.*do)/g;
 const BLOCK_CLOSING_TEXT = "end";
 const BLOCK_CLOSING_REGEXP = /(end$|end\s*(if|unless))/g;
 
@@ -125,7 +125,7 @@ export class RubyFileAnalyzer {
     return {
       indentationLength: blockOpening[0][1].length,
       blockOpening: {
-        text: blockOpening[0][3],
+        text: enhancedBlockOpening[0][3],
         line: index,
         startCharacterPosition: enhancedBlockOpening[0][1].length + (enhancedBlockOpening[0][2]?.length || 0),
         endCharacterPosition: blockOpening[0][1].length + (blockOpening[0][2]?.length || 0) + blockOpening[0][3].length,
@@ -139,7 +139,7 @@ export class RubyFileAnalyzer {
   _addInlineBlockClosingToRubyBlock(rubyBlock: RubyBlock, blockClosingStartCharacterPosition: RegExpMatchArray, line: string, index: number): void {
     rubyBlock.blockClosing.text = BLOCK_CLOSING_TEXT;
     rubyBlock.blockClosing.startCharacterPosition = blockClosingStartCharacterPosition.index || 0;
-    rubyBlock.blockClosing.endCharacterPosition = blockClosingStartCharacterPosition.index || 0 + rubyBlock.blockClosing.text.length;
+    rubyBlock.blockClosing.endCharacterPosition = (blockClosingStartCharacterPosition.index || 0) + rubyBlock.blockClosing.text.length;
     rubyBlock.blockClosing.line = index;
     rubyBlock.body.push(
       line.substring(

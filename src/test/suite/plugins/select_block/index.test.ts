@@ -343,7 +343,7 @@ suite("#getBlockUnderCursorPosition", () => {
       endCharacterPosition: 17,
       line: 38,
       startCharacterPosition: 15,
-      text: "[].map do",
+      text: "do",
     });
     assert.equal(result?.body.length, 1, "Body length");
     assert.equal(result?.body[0], "          '888'");
@@ -362,8 +362,8 @@ suite("#getBlockUnderCursorPosition", () => {
     assert.deepEqual(result?.blockOpening, {
       endCharacterPosition: 21,
       line: 41,
-      startCharacterPosition: 8,
-      text: "[].map do |x|",
+      startCharacterPosition: 15,
+      text: "do |x|",
     });
     assert.equal(result?.body.length, 1, "Body length");
     assert.equal(result?.body[0], " x ");
