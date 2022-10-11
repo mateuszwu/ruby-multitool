@@ -1,59 +1,59 @@
-import * as vscode from "vscode";
-import HashKeyConverter from '.';
+import * as vscode from 'vscode'
+import HashKeyConverter from '.'
 
 export function convertSingleKey() {
-  const activeTextEditor = vscode.window.activeTextEditor;
+  const activeTextEditor = vscode.window.activeTextEditor
   if (activeTextEditor !== undefined) {
-    const cursorPosition = activeTextEditor.selection.active;
+    const cursorPosition = activeTextEditor.selection.active
     const oldLineText = activeTextEditor.document.lineAt(
       activeTextEditor.selection.active
-    ).text;
+    ).text
     const newLineText = new HashKeyConverter().convertSingleKey(
       oldLineText,
       cursorPosition.character
-    );
+    )
     activeTextEditor.edit((textEditor) => {
       const selection = new vscode.Selection(
         new vscode.Position(cursorPosition.line, 0),
         new vscode.Position(cursorPosition.line, oldLineText.length)
-      );
-      textEditor.replace(selection, newLineText);
-    });
+      )
+      textEditor.replace(selection, newLineText)
+    })
   }
 }
 
 export function convertAllKeys() {
-  const activeTextEditor = vscode.window.activeTextEditor;
+  const activeTextEditor = vscode.window.activeTextEditor
   if (activeTextEditor === undefined) {
-    return;
+    return
   }
-  const cursorPosition = activeTextEditor.selection.active;
+  const cursorPosition = activeTextEditor.selection.active
   if (activeTextEditor?.selection.isEmpty) {
     const expandSelectionAndConvert = (iteration = 0) => {
       vscode.commands.executeCommand('editor.action.smartSelect.expand').then(() => {
-        const text = activeTextEditor.document.getText(activeTextEditor.selection);
+        const text = activeTextEditor.document.getText(activeTextEditor.selection)
         if (text.trim()[0] === '{' || text.trim()[0] === '(') {
-          const newLineText = new HashKeyConverter().convertAllKeys(text);
+          const newLineText = new HashKeyConverter().convertAllKeys(text)
           activeTextEditor.edit((textEditor) => {
-            textEditor.replace(activeTextEditor.selection, newLineText);
-          });
-          activeTextEditor.selection = new vscode.Selection(cursorPosition, cursorPosition);
+            textEditor.replace(activeTextEditor.selection, newLineText)
+          })
+          activeTextEditor.selection = new vscode.Selection(cursorPosition, cursorPosition)
 
-          return;
+          return
         }
 
         if (iteration < 5) {
-          expandSelectionAndConvert(iteration + 1);
+          expandSelectionAndConvert(iteration + 1)
         }
-      });
-    };
+      })
+    }
 
-    expandSelectionAndConvert();
+    expandSelectionAndConvert()
   } else {
-    const text = activeTextEditor.document.getText(activeTextEditor.selection);
-    const newLineText = new HashKeyConverter().convertAllKeys(text);
+    const text = activeTextEditor.document.getText(activeTextEditor.selection)
+    const newLineText = new HashKeyConverter().convertAllKeys(text)
     activeTextEditor.edit((textEditor) => {
-      textEditor.replace(activeTextEditor.selection, newLineText);
-    });
+      textEditor.replace(activeTextEditor.selection, newLineText)
+    })
   }
 }

@@ -1,12 +1,12 @@
-import * as assert from "assert";
+import * as assert from 'assert'
 import {
   foldAllDescribes,
   foldAllContexts,
   foldAllIts,
-} from "../../../../plugins/fold_all";
+} from '../../../../plugins/fold_all'
 
-suite("#foldAllDescribes", () => {
-  test(`returns array of lines number which starts with the world 'describe'`, () => {
+suite('#foldAllDescribes', () => {
+  test('returns array of lines number which starts with the world \'describe\'', () => {
     const text = `// this is the line 0 //
       require 'rails_helper'
 
@@ -28,14 +28,14 @@ suite("#foldAllDescribes", () => {
           end
         end
       end
-    `;
+    `
 
-    const result = foldAllDescribes(text);
+    const result = foldAllDescribes(text)
 
-    assert.deepEqual(result, [4, 14]);
-  });
+    assert.deepEqual(result, [4, 14])
+  })
 
-  test(`returns array of lines number which starts with the world 'context'`, () => {
+  test('returns array of lines number which starts with the world \'context\'', () => {
     const text = `// this is the line 0 //
       require 'rails_helper'
 
@@ -57,14 +57,14 @@ suite("#foldAllDescribes", () => {
           end
         end
       end
-    `;
+    `
 
-    const result = foldAllContexts(text);
+    const result = foldAllContexts(text)
 
-    assert.deepEqual(result, [5, 15]);
-  });
+    assert.deepEqual(result, [5, 15])
+  })
 
-  test(`returns array of lines number which starts with the world 'it'`, () => {
+  test('returns array of lines number which starts with the world \'it\'', () => {
     const text = `// this is the line 0 //
       require 'rails_helper'
 
@@ -86,10 +86,10 @@ suite("#foldAllDescribes", () => {
           end
         end
       end
-    `;
+    `
 
-    const result = foldAllIts(text);
+    const result = foldAllIts(text)
 
-    assert.deepEqual(result, [6, 9, 16]);
-  });
-});
+    assert.deepEqual(result, [6, 9, 16])
+  })
+})
