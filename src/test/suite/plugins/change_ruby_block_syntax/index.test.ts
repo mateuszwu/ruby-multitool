@@ -3,16 +3,17 @@ import { changeRubyBlockSyntax } from '../../../../plugins/change_ruby_block_syn
 
 suite('#changeRubyBlockSyntax', () => {
   test('when string is oneline with params and begins with curly bracket, it changes curly bracket syntax to \'do end\' syntax', () => {
+    const text = '    let(:test) { |foo| foo.bar }'
     const selectedText = '{ |foo| foo.bar }'
 
-    const result = changeRubyBlockSyntax(selectedText)
+    const result = changeRubyBlockSyntax(selectedText, text)
 
     assert.equal(
       result,
       [
         'do |foo|',
-        '  foo.bar',
-        'end',
+        '      foo.bar',
+        '    end',
       ].join('\n')
     )
   })
@@ -20,7 +21,7 @@ suite('#changeRubyBlockSyntax', () => {
   test('when string is oneline without params and begins with curly bracket, it changes curly bracket syntax to \'do end\' syntax', () => {
     const selectedText = '{ foo.bar }'
 
-    const result = changeRubyBlockSyntax(selectedText)
+    const result = changeRubyBlockSyntax(selectedText, selectedText)
 
     assert.equal(
       result,
@@ -39,7 +40,7 @@ suite('#changeRubyBlockSyntax', () => {
       '}'
     ].join('\n')
 
-    const result = changeRubyBlockSyntax(selectedText)
+    const result = changeRubyBlockSyntax(selectedText, selectedText)
 
     assert.equal(
       result,
@@ -58,7 +59,7 @@ suite('#changeRubyBlockSyntax', () => {
       '  }'
     ].join('\n')
 
-    const result = changeRubyBlockSyntax(selectedText)
+    const result = changeRubyBlockSyntax(selectedText, selectedText)
 
     assert.equal(
       result,
@@ -73,7 +74,7 @@ suite('#changeRubyBlockSyntax', () => {
   test('when string is oneline with params and begins with \'do\', it changes \'do end\' syntax to curly bracket syntax', () => {
     const selectedText = 'do |foo| foo.bar end'
 
-    const result = changeRubyBlockSyntax(selectedText)
+    const result = changeRubyBlockSyntax(selectedText, selectedText)
 
     assert.equal(result, '{ |foo| foo.bar }')
   })
@@ -81,7 +82,7 @@ suite('#changeRubyBlockSyntax', () => {
   test('when string is oneline without params and begins with \'do\', it changes \'do end\' syntax to curly bracket syntax', () => {
     const selectedText = 'do foo.bar end'
 
-    const result = changeRubyBlockSyntax(selectedText)
+    const result = changeRubyBlockSyntax(selectedText, selectedText)
 
     assert.equal(result, '{ foo.bar }')
   })
@@ -93,7 +94,7 @@ suite('#changeRubyBlockSyntax', () => {
       'end',
     ].join('\n')
 
-    const result = changeRubyBlockSyntax(selectedText)
+    const result = changeRubyBlockSyntax(selectedText, selectedText)
 
     assert.equal(
       result,
@@ -112,7 +113,7 @@ suite('#changeRubyBlockSyntax', () => {
       'end',
     ].join('\n')
 
-    const result = changeRubyBlockSyntax(selectedText)
+    const result = changeRubyBlockSyntax(selectedText, selectedText)
 
     assert.equal(
       result,
@@ -127,7 +128,7 @@ suite('#changeRubyBlockSyntax', () => {
   test('when string does NOT begin with \'do end\' nor curly bracket syntas, it changes does not change anything', () => {
     const selectedText = '[foo, bar]'
 
-    const result = changeRubyBlockSyntax(selectedText)
+    const result = changeRubyBlockSyntax(selectedText, selectedText)
 
     assert.equal(result, selectedText)
   })

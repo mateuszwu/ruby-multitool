@@ -8,7 +8,7 @@ export function changeRubyBlockSyntax() {
   }
 
   const newSelectedText = extractToPrivateMethodModule.changeRubyBlockSyntax(
-    activeTextEditor.document.getText(activeTextEditor.selection)
+    activeTextEditor.document.getText(activeTextEditor.selection), activeTextEditor.document.getText()
   )
 
   activeTextEditor.edit((textEditor) => {
