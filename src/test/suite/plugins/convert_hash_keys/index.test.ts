@@ -1,7 +1,7 @@
 import * as assert from 'assert'
-import HashKeyConverter from '../../../../plugins/hash_key_converter'
+import HashKeyConverter from '../../../../plugins/convert_hash_keys'
 
-suite('#convertSingleKey', () => {
+suite('#convertSingleHashKey', () => {
   [
     { actualValue: '{ :foo => \'value\', }', expectedValue: '{ foo: \'value\', }', cursorAtWord: 'foo' },
     { actualValue: '{ :"foo" => value }', expectedValue: '{ foo: value }', cursorAtWord: 'foo' },
@@ -43,7 +43,7 @@ suite('#convertSingleKey', () => {
     test(`selected word: ${cursorAtWord} - convert ${actualValue} to key: ${expectedValue}`, () => {
       const characterNumber = actualValue.indexOf(cursorAtWord)
 
-      const result = new HashKeyConverter().convertSingleKey(actualValue, characterNumber)
+      const result = new HashKeyConverter().convertSingleHashKey(actualValue, characterNumber)
 
       assert(result === expectedValue, `${result} === ${expectedValue}`)
     })
@@ -56,14 +56,14 @@ suite('#convertSingleKey', () => {
     test(`DO NOT convert ${actualValue}`, () => {
       const characterNumber = 4
 
-      const result = new HashKeyConverter().convertSingleKey(actualValue, characterNumber)
+      const result = new HashKeyConverter().convertSingleHashKey(actualValue, characterNumber)
 
       assert(result === actualValue, `${result} === ${actualValue}`)
     })
   })
 })
 
-suite('#convertAllKeys', () => {
+suite('#convertAllHashKeys', () => {
   [
     {
       actualValue: '{ \'foo\' => value, \'baz\' => value }',
@@ -95,7 +95,7 @@ suite('#convertAllKeys', () => {
     },
   ].forEach(({ actualValue, expectedValue }) => {
     test(`convert ${actualValue} to: ${expectedValue}`, () => {
-      const result = new HashKeyConverter().convertAllKeys(actualValue)
+      const result = new HashKeyConverter().convertAllHashKeys(actualValue)
 
       assert(result === expectedValue, `${result} === ${expectedValue}`)
     })

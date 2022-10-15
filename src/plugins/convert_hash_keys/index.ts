@@ -3,7 +3,7 @@ const FANCY_HASH_ROCKET_SYNTAX_REGEXP = new RegExp(/(:?(['"][\w\d_#{}\s]+["'])\s
 const NEW_HASH_SYNTAX_REGEXP = new RegExp(/(['"]?([\w\d_]+)['"]?:\s+)/g)
 
 export default class HashKeyConverter {
-  convertSingleKey(lineText: string, cursorPosition: number): string {
+  convertSingleHashKey(lineText: string, cursorPosition: number): string {
     return (
       this._convertRegularHashRocketKey(lineText, cursorPosition) ||
         this._convertFancyHashRocketKey(lineText, cursorPosition) ||
@@ -12,22 +12,22 @@ export default class HashKeyConverter {
     )
   }
 
-  convertAllKeys(text: string): string {
-    let newText = this._convertAllKeysToNewSyntax(text)
+  convertAllHashKeys(text: string): string {
+    let newText = this._convertAllHashKeysToNewSyntax(text)
     if (newText === text) {
-      newText = this._convertAllKeysToOldSyntax(text)
+      newText = this._convertAllHashKeysToOldSyntax(text)
     }
 
     return newText
   }
 
-  _convertAllKeysToNewSyntax(text: string): string {
+  _convertAllHashKeysToNewSyntax(text: string): string {
     return this._splitTextToFragmentsAndConvert(text, (fragment: string): string | undefined => {
       return this._convertRegularHashRocketKey(fragment, 0, true) || this._convertFancyHashRocketKey(fragment, 0, true)
     })
   }
 
-  _convertAllKeysToOldSyntax(text: string): string {
+  _convertAllHashKeysToOldSyntax(text: string): string {
     return this._splitTextToFragmentsAndConvert(text, (fragment: string): string | undefined => {
       return this._convertNewHashRocketKey(fragment, 0, true)
     })

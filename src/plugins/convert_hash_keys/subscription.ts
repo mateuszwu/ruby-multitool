@@ -1,14 +1,14 @@
 import * as vscode from 'vscode'
 import HashKeyConverter from '.'
 
-export function convertSingleKey() {
+export function convertSingleHashKey() {
   const activeTextEditor = vscode.window.activeTextEditor
   if (activeTextEditor !== undefined) {
     const cursorPosition = activeTextEditor.selection.active
     const oldLineText = activeTextEditor.document.lineAt(
       activeTextEditor.selection.active
     ).text
-    const newLineText = new HashKeyConverter().convertSingleKey(
+    const newLineText = new HashKeyConverter().convertSingleHashKey(
       oldLineText,
       cursorPosition.character
     )
@@ -22,7 +22,7 @@ export function convertSingleKey() {
   }
 }
 
-export function convertAllKeys() {
+export function convertAllHashKeys() {
   const activeTextEditor = vscode.window.activeTextEditor
   if (activeTextEditor === undefined) {
     return
@@ -33,7 +33,7 @@ export function convertAllKeys() {
       vscode.commands.executeCommand('editor.action.smartSelect.expand').then(() => {
         const text = activeTextEditor.document.getText(activeTextEditor.selection)
         if (text.trim()[0] === '{' || text.trim()[0] === '(') {
-          const newLineText = new HashKeyConverter().convertAllKeys(text)
+          const newLineText = new HashKeyConverter().convertAllHashKeys(text)
           activeTextEditor.edit((textEditor) => {
             textEditor.replace(activeTextEditor.selection, newLineText)
           })
@@ -51,7 +51,7 @@ export function convertAllKeys() {
     expandSelectionAndConvert()
   } else {
     const text = activeTextEditor.document.getText(activeTextEditor.selection)
-    const newLineText = new HashKeyConverter().convertAllKeys(text)
+    const newLineText = new HashKeyConverter().convertAllHashKeys(text)
     activeTextEditor.edit((textEditor) => {
       textEditor.replace(activeTextEditor.selection, newLineText)
     })

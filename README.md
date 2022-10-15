@@ -80,17 +80,17 @@ Folds all 'it' blocks without the one you are currently in.
 Note: if you want to revert fold operations you can use the following command:
 > command title: `Unfold All`
 
-### Hash Key Converter
+### Convert Hash Keys
 
-Converts hash key-value pair under the cursor.
->command name: `ruby-multitool.convertSingleKey`
+Converts hash key under the cursor.
+>command name: `ruby-multitool.convertSingleHashKey`
 >
->command title: `Ruby Multitool: Convert Single Key`
+>command title: `Ruby Multitool: Convert Single Hash Key`
 
-Selects the entire hash object and converts all of its key-value pairs.
->command name: `ruby-multitool.convertAllKeys`
+Selects the entire hash object and converts all of its keys.
+>command name: `ruby-multitool.convertAllHashKeys`
 >
->command title: `Ruby Multitool: Convert All Keys`
+>command title: `Ruby Multitool: Convert All Hash Keys`
 
 ### Invert Selection Direction
 

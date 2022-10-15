@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import { convertSingleKey, convertAllKeys } from './plugins/hash_key_converter/subscription'
+import { convertSingleHashKey, convertAllHashKeys } from './plugins/convert_hash_keys/subscription'
 import { moveRight, moveLeft } from './plugins/params_sidemove/subscription'
 import { jumpToLastMigration } from './plugins/jump_to_last_migration/subscription'
 import { foldAllDescribes, foldAllContexts, foldAllIts } from './plugins/fold_all/subscription'
@@ -11,8 +11,8 @@ import { extractSelectionToPrivateMethod } from './plugins/extract_selection_to_
 import { changeRubyBlockSyntax } from './plugins/change_ruby_block_syntax/subscription'
 
 export function activate(context: vscode.ExtensionContext) {
-  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.convertSingleKey', convertSingleKey))
-  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.convertAllKeys', convertAllKeys))
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.convertSingleHashKey', convertSingleHashKey))
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.convertAllHashKeys', convertAllHashKeys))
 
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.moveRight', moveRight))
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.moveLeft', moveLeft))

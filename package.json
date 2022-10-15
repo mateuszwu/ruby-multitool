@@ -10,8 +10,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:ruby-multitool.convertSingleKey",
-    "onCommand:ruby-multitool.convertAllKeys",
+    "onCommand:ruby-multitool.convertSingleHashKey",
+    "onCommand:ruby-multitool.convertAllHashKeys",
     "onCommand:ruby-multitool.moveRight",
     "onCommand:ruby-multitool.moveLeft",
     "onCommand:ruby-multitool.jumpToLastMigration",
@@ -33,12 +33,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "ruby-multitool.convertSingleKey",
-        "title": "Ruby Multitool: Convert Single Key"
+        "command": "ruby-multitool.convertSingleHashKey",
+        "title": "Ruby Multitool: Convert Single Hash Key"
       },
       {
-        "command": "ruby-multitool.convertAllKeys",
-        "title": "Ruby Multitool: Convert All Keys"
+        "command": "ruby-multitool.convertAllHashKeys",
+        "title": "Ruby Multitool: Convert All Hash Keys"
       },
       {
         "command": "ruby-multitool.moveRight",
