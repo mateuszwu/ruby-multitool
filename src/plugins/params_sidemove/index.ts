@@ -67,7 +67,7 @@ interface MatchingFunc {
 }
 
 export default class ParamsSidemove {
-  moveRight(text: string, cursorPosition: CursorPosition): ParamsSidemoveReturn {
+  moveParamRight(text: string, cursorPosition: CursorPosition): ParamsSidemoveReturn {
     const matchedElements = this._elementsToRight(text, cursorPosition)
     const currentMatch = matchedElements.filter((x) => x.isCurrentKeyValue)[0]
     const nextMatch = matchedElements.filter((x) => x.isNextToTheRight)[0]
@@ -102,7 +102,7 @@ export default class ParamsSidemove {
     }
   }
 
-  moveLeft(text: string, cursorPosition: CursorPosition): ParamsSidemoveReturn {
+  moveParamLeft(text: string, cursorPosition: CursorPosition): ParamsSidemoveReturn {
     const linesAsArray = text.split('\n')
     if (linesAsArray.length > 2) {
       cursorPosition = {...cursorPosition, character: cursorPosition.character + linesAsArray[0].length}

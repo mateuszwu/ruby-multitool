@@ -115,15 +115,15 @@ Opens notepad file that is unique for each workspace.
 
 ### Params Sidemove
 
-Moves params under the cursor position to the right.
->command name: `ruby-multitool.moveRight`
+Moves param under the cursor position to the right.
+>command name: `ruby-multitool.moveParamRight`
 >
->command title: `Ruby Multitool: Move Key Value Right`
+>command title: `Ruby Multitool: Move Param Right`
 
-Moves params under the cursor position to the left.
->command name: `ruby-multitool.moveLeft`
+Moves param under the cursor position to the left.
+>command name: `ruby-multitool.moveParamLeft`
 >
->command title: `Ruby Multitool: Move Key Value Left`
+>command title: `Ruby Multitool: Move Param Left`
 
 ### Select Block
 

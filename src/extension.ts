@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
 import { convertSingleHashKey, convertAllHashKeys } from './plugins/convert_hash_keys/subscription'
-import { moveRight, moveLeft } from './plugins/params_sidemove/subscription'
+import { moveParamRight, moveParamLeft } from './plugins/params_sidemove/subscription'
 import { jumpToLastMigration } from './plugins/jump_to_last_migration/subscription'
 import { foldAllDescribes, foldAllContexts, foldAllIts } from './plugins/fold_all/subscription'
 import { openNotepad } from './plugins/open_notepad/subscription'
@@ -14,8 +14,8 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.convertSingleHashKey', convertSingleHashKey))
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.convertAllHashKeys', convertAllHashKeys))
 
-  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.moveRight', moveRight))
-  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.moveLeft', moveLeft))
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.moveParamRight', moveParamRight))
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.moveParamLeft', moveParamLeft))
 
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.jumpToLastMigration', jumpToLastMigration))
 

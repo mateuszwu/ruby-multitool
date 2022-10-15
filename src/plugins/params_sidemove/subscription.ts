@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 import ParamsSidemove from '.'
 
-export function moveRight() {
+export function moveParamRight() {
   const activeTextEditor = vscode.window.activeTextEditor
   if (activeTextEditor !== undefined) {
     const cursorPosition = activeTextEditor.selection.active
@@ -10,7 +10,7 @@ export function moveRight() {
       new vscode.Position(cursorPosition.line + 2, 0)
     )
     const oldText = activeTextEditor.document.getText(moveAreaSelection)
-    const { text: newText, cursorOffsetPosition } = new ParamsSidemove().moveRight(oldText, cursorPosition)
+    const { text: newText, cursorOffsetPosition } = new ParamsSidemove().moveParamRight(oldText, cursorPosition)
     activeTextEditor.edit((textEditor) => {
       textEditor.replace(moveAreaSelection, newText)
     })
@@ -19,7 +19,7 @@ export function moveRight() {
   }
 }
 
-export function moveLeft() {
+export function moveParamLeft() {
   const activeTextEditor = vscode.window.activeTextEditor
   if (activeTextEditor !== undefined) {
     const cursorPosition = activeTextEditor.selection.active
@@ -28,7 +28,7 @@ export function moveLeft() {
       new vscode.Position(cursorPosition.line + 1, 0)
     )
     const oldText = activeTextEditor.document.getText(moveAreaSelection)
-    const { text: newText, cursorOffsetPosition } = new ParamsSidemove().moveLeft(oldText, cursorPosition)
+    const { text: newText, cursorOffsetPosition } = new ParamsSidemove().moveParamLeft(oldText, cursorPosition)
     activeTextEditor.edit((textEditor) => {
       textEditor.replace(moveAreaSelection, newText)
     })

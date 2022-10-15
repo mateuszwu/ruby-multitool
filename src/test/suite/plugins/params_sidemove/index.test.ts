@@ -1,7 +1,7 @@
 import * as assert from 'assert'
 import ParamsSidemove from '../../../../plugins/params_sidemove'
 
-suite('#moveRight', () => {
+suite('#moveParamRight', () => {
   [
     {
       actualValue: '{ :foo => \'value\', }',
@@ -93,7 +93,7 @@ suite('#moveRight', () => {
     }) => {
       test(`Convert ${actualValue} to: ${expectedValue} and change cursor position by { line: ${expectedCursorPositionChange.line}, character: ${expectedCursorPositionChange.character} }`, () => {
         const { text: result, cursorOffsetPosition } =
-          new ParamsSidemove().moveRight(actualValue, actualCursorPosition)
+          new ParamsSidemove().moveParamRight(actualValue, actualCursorPosition)
 
         assert(result === expectedValue, `${result} === ${expectedValue}`)
         assert(
@@ -110,7 +110,7 @@ suite('#moveRight', () => {
   )
 })
 
-suite('#moveLeft', () => {
+suite('#moveParamLeft', () => {
   [
     {
       actualValue: '{ :foo => \'value\', }',
@@ -200,7 +200,7 @@ suite('#moveLeft', () => {
     }) => {
       test(`Convert ${actualValue} to: ${expectedValue} and change cursor position by { line: ${expectedCursorPositionChange.line}, character: ${expectedCursorPositionChange.character} }`, () => {
         const { text: result, cursorOffsetPosition } =
-          new ParamsSidemove().moveLeft(actualValue, actualCursorPosition)
+          new ParamsSidemove().moveParamLeft(actualValue, actualCursorPosition)
 
         assert(
           result === expectedValue,

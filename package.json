@@ -12,8 +12,8 @@
   "activationEvents": [
     "onCommand:ruby-multitool.convertSingleHashKey",
     "onCommand:ruby-multitool.convertAllHashKeys",
-    "onCommand:ruby-multitool.moveRight",
-    "onCommand:ruby-multitool.moveLeft",
+    "onCommand:ruby-multitool.moveParamRight",
+    "onCommand:ruby-multitool.moveParamLeft",
     "onCommand:ruby-multitool.jumpToLastMigration",
     "onCommand:ruby-multitool.foldAllDescribes",
     "onCommand:ruby-multitool.foldAllContexts",
@@ -41,12 +41,12 @@
         "title": "Ruby Multitool: Convert All Hash Keys"
       },
       {
-        "command": "ruby-multitool.moveRight",
-        "title": "Ruby Multitool: Move Key Value Right"
+        "command": "ruby-multitool.moveParamRight",
+        "title": "Ruby Multitool: Move Param Right"
       },
       {
-        "command": "ruby-multitool.moveLeft",
-        "title": "Ruby Multitool: Move Key Value Left"
+        "command": "ruby-multitool.moveParamLeft",
+        "title": "Ruby Multitool: Move Param Left"
       },
       {
         "command": "ruby-multitool.jumpToLastMigration",
