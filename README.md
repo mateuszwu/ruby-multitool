@@ -127,12 +127,12 @@ Moves param under the cursor position to the left.
 
 ### Select Block
 
-Selects `do end` block along with the block opening and closing.
+Selects `ruby` block along with the block opening and closing.
 >command name: `ruby-multitool.selectAroundBlock`
 >
 >command title: `Ruby Multitool: Select around block you are currently in`
 
-Selects only what is inside the `do end` block.
+Selects only what is inside the `ruby` block.
 >command name: `ruby-multitool.selectAroundBlock`
 >
 >command title: `Ruby Multitool: Select around block you are currently in`
