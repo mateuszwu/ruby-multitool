@@ -1,35 +1,151 @@
-# ruby-multitool README
+# Ruby Multitool
 
-This is the README for your extension "ruby-multitool". After writing up a brief description, we recommend including the following sections.
+A collection of a few minor plugins that should slightly enhance your productivity.
+To maximize performance bind the commands with keyboard shortcuts.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Change Ruby Block Syntax
+- Copy Path With Number
+- Extract To Private Method
+- Fold All
+- Hash Key Converter
+- Invert Selection Direction
+- Jump To Last Migration
+- Open Notepad
+- Params Sidemove
+- Select Block
 
-For example if there is an image subfolder under your extension project workspace:
+### Change Ruby Block Syntax
 
-\!\[feature X\]\(images/feature-x.png\)
+Allows toggle between selected `do end` and curly bracket `{}` block syntax
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+>command name: `ruby-multitool.changeRubyBlockSyntax`
+>
+>command title: `Ruby Multitool: Change ruby block syntax`
 
-## Requirements
+### Copy Path With Number
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Saves in the system clipboard the active file absolute path appended with the line number where the cursor is.
 
-## Extension Settings
+>command name: `ruby-multitool.copyAbsolutePathWithLineNumber`
+>
+>command title: `Ruby Multitool: Copy absolute path with line number`
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Example result:
 
-For example:
+```text
+/Users/xxx/ruby-multitool/README.md:29
+```
 
-This extension contributes the following settings:
+Saves in the system clipboard the active file relative path appended with the line number where the cursor is.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+command name: `ruby-multitool.copyRelativePathWithLineNumber`
 
-## Known Issues
+command title: `Ruby Multitool: Copy relative path with line number`
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Example result:
+
+```text
+README.md:44
+```
+
+### Extract To Private Method
+
+Moves selected text to a new private method.
+
+>command name: `ruby-multitool.extractToPrivateMethod`
+>
+>command title: `Ruby Multitool: Extract selected text to private method`
+
+### Fold All
+
+Folds all 'describe' blocks without the one you are currently in.
+
+>command name: `ruby-multitool.foldAllDescribes`
+>
+>command title: `Ruby Multitool: Fold all describe`
+
+Folds all 'context' blocks without the one you are currently in.
+
+>command name: `ruby-multitool.foldAllContexts`
+>
+>command title: `Ruby Multitool: Fold all context`
+
+Folds all 'it' blocks without the one you are currently in.
+>command name: `ruby-multitool.foldAllIts`
+>
+>command title: `Ruby Multitool: Fold all it`
+
+Note: if you want to revert fold operations you can use the following command:
+> command title: `Unfold All`
+
+### Hash Key Converter
+
+Converts hash key-value pair under the cursor.
+>command name: `ruby-multitool.convertSingleKey`
+>
+>command title: `Ruby Multitool: Convert Single Key`
+
+Selects the entire hash object and converts all of its key-value pairs.
+>command name: `ruby-multitool.convertAllKeys`
+>
+>command title: `Ruby Multitool: Convert All Keys`
+
+### Invert Selection Direction
+
+Changes the selection direction.
+>command name: `ruby-multitool.invertSelectionDirection`
+>
+>command title: `Ruby Multitool: Invert selection direction`
+
+### Jump To Last Migration
+
+Opens the newest rails migration file.
+>command name: `ruby-multitool.jumpToLastMigration`
+>
+>command title: `Ruby Multitool: Jump to last created RoR migration`
+
+### Open Notepad
+
+Opens notepad file that is unique for each workspace.
+>command name: `ruby-multitool.openNotepad`
+>
+>command title: `Ruby Multitool: Open project notepad`
+
+### Params Sidemove
+
+Moves params under the cursor position to the right.
+>command name: `ruby-multitool.moveRight`
+>
+>command title: `Ruby Multitool: Move Key Value Right`
+
+Moves params under the cursor position to the left.
+>command name: `ruby-multitool.moveLeft`
+>
+>command title: `Ruby Multitool: Move Key Value Left`
+
+### Select Block
+
+Selects `do end` block along with the block opening and closing.
+>command name: `ruby-multitool.selectAroundBlock`
+>
+>command title: `Ruby Multitool: Select around block you are currently in`
+
+Selects only what is inside the `do end` block.
+>command name: `ruby-multitool.selectAroundBlock`
+>
+>command title: `Ruby Multitool: Select around block you are currently in`
+
+Selects `def` block along with the block opening and closing.
+>command name: `ruby-multitool.selectAroundDefBlock`
+>
+>command title: `Ruby Multitool: Select around def block you are currently in`
+
+Selects only what is inside the `def` block.
+>command name: `ruby-multitool.selectInsideDefBlock`
+>
+>command title: `Ruby Multitool: Select inside def block you are currently in`
 
 ## Release Notes
 
@@ -38,34 +154,3 @@ Users appreciate release notes as you update your extension.
 ### 1.0.0
 
 Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
