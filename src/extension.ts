@@ -7,7 +7,7 @@ import { openNotepad } from './plugins/open_notepad/subscription'
 import { copyAbsolutePathWithLineNumber, copyRelativePathWithLineNumber } from './plugins/copy_path_with_line_number/subscription'
 import { selectAroundBlock, selectInsideBlock, selectAroundDefBlock, selectInsideDefBlock } from './plugins/select_block/subscription'
 import { invertSelectionDirection } from './plugins/invert_selection_direction/subscription'
-import { extractToPrivateMethod } from './plugins/extract_to_method/subscription'
+import { extractSelectionToPrivateMethod } from './plugins/extract_selection_to_method/subscription'
 import { changeRubyBlockSyntax } from './plugins/change_ruby_block_syntax/subscription'
 
 export function activate(context: vscode.ExtensionContext) {
@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.invertSelectionDirection', invertSelectionDirection))
 
-  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.extractToPrivateMethod', extractToPrivateMethod))
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.extractSelectionToPrivateMethod', extractSelectionToPrivateMethod))
 
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.changeRubyBlockSyntax', changeRubyBlockSyntax))
 }

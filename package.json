@@ -26,7 +26,7 @@
     "onCommand:ruby-multitool.selectAroundDefBlock",
     "onCommand:ruby-multitool.selectInsideDefBlock",
     "onCommand:ruby-multitool.invertSelectionDirection",
-    "onCommand:ruby-multitool.extractToPrivateMethod",
+    "onCommand:ruby-multitool.extractSelectionToPrivateMethod",
     "onCommand:ruby-multitool.changeRubyBlockSyntax"
   ],
   "main": "./dist/extension.js",
@@ -97,7 +97,7 @@
         "title": "Ruby Multitool: Invert selection direction"
       },
       {
-        "command": "ruby-multitool.extractToPrivateMethod",
+        "command": "ruby-multitool.extractSelectionToPrivateMethod",
         "title": "Ruby Multitool: Extract selected text to private method"
       },
       {

@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import * as extractToPrivateMethodModule from '.'
+import * as changeRubyBlockSyntaxModule from '.'
 
 export function changeRubyBlockSyntax() {
   const activeTextEditor = vscode.window.activeTextEditor
@@ -7,7 +7,7 @@ export function changeRubyBlockSyntax() {
     return
   }
 
-  const newSelectedText = extractToPrivateMethodModule.changeRubyBlockSyntax(
+  const newSelectedText = changeRubyBlockSyntaxModule.changeRubyBlockSyntax(
     activeTextEditor.document.getText(activeTextEditor.selection), activeTextEditor.document.getText()
   )
 

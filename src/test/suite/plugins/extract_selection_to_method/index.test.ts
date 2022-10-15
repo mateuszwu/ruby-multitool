@@ -1,10 +1,10 @@
 import * as assert from 'assert'
 import * as vscode from 'vscode'
 import {
-  extractToPrivateMethod,
-} from '../../../../plugins/extract_to_method'
+  extractSelectionToPrivateMethod,
+} from '../../../../plugins/extract_selection_to_method'
 
-suite('#extractToPrivateMethod', () => {
+suite('#extractSelectionToPrivateMethod', () => {
   test('extracts selected oneline text to a new private method', () => {
     const fileText = [
       'class DummyClass',
@@ -16,7 +16,7 @@ suite('#extractToPrivateMethod', () => {
     const selectedText = '\'baz\''
     const cursorPosition = new vscode.Position(2, 0)
 
-    const result = extractToPrivateMethod(fileText, cursorPosition, selectedText)
+    const result = extractSelectionToPrivateMethod(fileText, cursorPosition, selectedText)
 
     assert.equal(
       result?.body.join('\n'),
@@ -55,7 +55,7 @@ suite('#extractToPrivateMethod', () => {
     ].join('\n')
     const cursorPosition = new vscode.Position(2, 0)
 
-    const result = extractToPrivateMethod(fileText, cursorPosition, selectedText)
+    const result = extractSelectionToPrivateMethod(fileText, cursorPosition, selectedText)
 
     assert.equal(
       result?.body.join('\n'),

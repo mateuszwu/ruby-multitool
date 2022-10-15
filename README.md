@@ -54,7 +54,7 @@ README.md:44
 
 Moves selected text to a new private method.
 
->command name: `ruby-multitool.extractToPrivateMethod`
+>command name: `ruby-multitool.extractSelectionToPrivateMethod`
 >
 >command title: `Ruby Multitool: Extract selected text to private method`
 
