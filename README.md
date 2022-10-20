@@ -18,6 +18,8 @@ To maximize performance bind the commands with keyboard shortcuts.
 
 ### Change Ruby Block Syntax
 
+![multitool-fold](https://user-images.githubusercontent.com/18404037/196281056-95ff737a-73ce-47be-a8f8-d31735080620.gif)
+
 Allows toggle between selected `do end` and curly bracket `{}` block syntax
 
 >command name: `ruby-multitool.changeRubyBlockSyntax`
@@ -52,6 +54,8 @@ README.md:44
 
 ### Extract To Private Method
 
+![multitool-fold](https://user-images.githubusercontent.com/18404037/196282960-0205daca-0f39-4433-98a8-a942766e47af.gif)
+
 Moves selected text to a new private method.
 
 >command name: `ruby-multitool.extractSelectionToPrivateMethod`
@@ -59,6 +63,8 @@ Moves selected text to a new private method.
 >command title: `Ruby Multitool: Extract selected text to private method`
 
 ### Fold All
+
+![multitool-fold](https://user-images.githubusercontent.com/18404037/196279250-187e59c7-363f-4f3d-9636-e486eef35fbd.gif)
 
 Folds all 'describe' blocks without the one you are currently in.
 
@@ -82,6 +88,8 @@ Note: if you want to revert fold operations you can use the following command:
 
 ### Convert Hash Keys
 
+![multitool-fold](https://user-images.githubusercontent.com/18404037/196284705-662acd84-4354-4afb-9a0b-b8a8616c9afb.gif)
+
 Converts hash key under the cursor.
 >command name: `ruby-multitool.convertSingleHashKey`
 >
@@ -93,6 +101,8 @@ Selects the entire hash object and converts all of its keys.
 >command title: `Ruby Multitool: Convert All Hash Keys`
 
 ### Invert Selection Direction
+
+![multitool-fold](https://user-images.githubusercontent.com/18404037/196770937-8edee137-cff8-4fa6-8264-b0581a7a89af.gif)
 
 Changes the selection direction.
 >command name: `ruby-multitool.invertSelectionDirection`
@@ -115,6 +125,8 @@ Opens notepad file that is unique for each workspace.
 
 ### Params Sidemove
 
+![multitool-fold](https://user-images.githubusercontent.com/18404037/196285733-7f053307-5dd9-49b5-b63f-693ac0be8f18.gif)
+
 Moves param under the cursor position to the right.
 >command name: `ruby-multitool.moveParamRight`
 >
@@ -126,6 +138,8 @@ Moves param under the cursor position to the left.
 >command title: `Ruby Multitool: Move Param Left`
 
 ### Select Block
+
+![multitool-fold](https://user-images.githubusercontent.com/18404037/196769968-4e39122b-f22a-48a8-8134-9ce5a6bb372d.gif)
 
 Selects `ruby` block along with the block opening and closing.
 >command name: `ruby-multitool.selectAroundBlock`
@@ -153,4 +167,15 @@ Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
-Initial release of ...
+The initial release of the following plugins:
+
+- Change Ruby Block Syntax
+- Copy Path With Number
+- Extract To Private Method
+- Fold All
+- Hash Key Converter
+- Invert Selection Direction
+- Jump To Last Migration
+- Open Notepad
+- Params Sidemove
+- Select Block
