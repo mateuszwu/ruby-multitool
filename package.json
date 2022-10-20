@@ -1,13 +1,20 @@
 {
+  "publisher": "MateuszWieczorek",
   "name": "ruby-multitool",
   "displayName": "Ruby Multitool",
-  "description": "will add later",
-  "version": "0.0.1",
+  "description": "A collection of small plugins designed to make working with ruby code more pleasurable.",
+  "license": "MIT",
+  "keywords": [
+    "ruby",
+    "notepad",
+    "block"
+  ],
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.70.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
   "activationEvents": [
     "onCommand:ruby-multitool.convertSingleHashKey",
