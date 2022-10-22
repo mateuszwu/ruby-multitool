@@ -3,6 +3,15 @@
   "name": "ruby-multitool",
   "displayName": "Ruby Multitool",
   "description": "A collection of small plugins designed to make working with ruby code more pleasurable.",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mateuszwu/ruby-multitool"
+  },
+  "author": {
+    "name": "Mateusz Wieczorek",
+    "url": "https://github.com/mateuszwu/"
+  },
   "license": "MIT",
   "keywords": [
     "ruby",
