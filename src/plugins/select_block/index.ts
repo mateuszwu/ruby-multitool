@@ -26,7 +26,7 @@ const ALL_BLOCK_REGEXP = [
 const BLOCK_OPENING_REGEXP = new RegExp(`${INDENTATION_REGEXP}(${ALL_BLOCK_REGEXP.join('|')})`, 'g')
 const SUPPORT_DO_REGEXP = /(^\s*.*\s*)(unused_group)?(do[^\w]\s*\|.*\||.*do)/g
 const BLOCK_CLOSING_TEXT = 'end'
-const BLOCK_CLOSING_REGEXP = /(end$|end\s*(if|unless))/g
+const BLOCK_CLOSING_REGEXP = /(?<=^\s*[^#]*\s*)(end\s*(if|unless)*[\s\w\d]*)/g
 
 interface RubyBlockDetails {
   text: string;

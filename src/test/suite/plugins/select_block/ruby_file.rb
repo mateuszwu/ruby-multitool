@@ -47,7 +47,7 @@ module Foo
         end
 
         omg4 = case 9==9
-        when true then 1000
+        when true then 1000 # end
         when false then 2000
         end
 

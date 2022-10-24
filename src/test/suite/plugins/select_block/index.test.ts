@@ -386,7 +386,7 @@ suite('#getBlockUnderCursorPosition', () => {
       text: 'case 9==9',
     })
     assert.equal(result?.body.length, 2, 'Body length')
-    assert.equal(result?.body[0], '        when true then 1000')
+    assert.equal(result?.body[0], '        when true then 1000 # end')
   })
 
   test('returns multiline \'case\' with body (variable assign)', async () => {
