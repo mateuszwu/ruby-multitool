@@ -5,16 +5,16 @@ To maximize performance bind the commands with keyboard shortcuts.
 
 ## Features
 
-- Change Ruby Block Syntax
-- Copy Path With Number
-- Extract To Private Method
-- Fold All
-- Hash Key Converter
-- Invert Selection Direction
-- Jump To Last Migration
-- Open Notepad
-- Params Sidemove
-- Select Block
+- [Change Ruby Block Syntax](#change-ruby-block-syntax)
+- [Copy Path With Number](#copy-path-with-number)
+- [Extract To Private Method](#extract-to-private-method)
+- [Fold All](#fold-all)
+- [Convert Hash Keys](#convert-hash-keys)
+- [Invert Selection Direction](#invert-selection-direction)
+- [Jump To Last Migration](#jump-to-last-migration)
+- [Open Notepad](#open-notepad)
+- [Params Sidemove](#params-sidemove)
+- [Select Block](#select-block)
 
 ### Change Ruby Block Syntax
 
@@ -147,9 +147,9 @@ Selects `ruby` block along with the block opening and closing.
 >command title: `Ruby Multitool: Select around block you are currently in`
 
 Selects only what is inside the `ruby` block.
->command name: `ruby-multitool.selectAroundBlock`
+>command name: `ruby-multitool.selectInsideBlock`
 >
->command title: `Ruby Multitool: Select around block you are currently in`
+>command title: `Ruby Multitool: Select inside block you are currently in`
 
 Selects `def` block along with the block opening and closing.
 >command name: `ruby-multitool.selectAroundDefBlock`
@@ -161,21 +161,6 @@ Selects only what is inside the `def` block.
 >
 >command title: `Ruby Multitool: Select inside def block you are currently in`
 
-## Release Notes
+### Changelog
 
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-The initial release of the following plugins:
-
-- Change Ruby Block Syntax
-- Copy Path With Number
-- Extract To Private Method
-- Fold All
-- Hash Key Converter
-- Invert Selection Direction
-- Jump To Last Migration
-- Open Notepad
-- Params Sidemove
-- Select Block
+See the project's [changelog](CHANGELOG.md) here.
