@@ -7,7 +7,7 @@ export function copyAbsolutePathWithLineNumber() {
   }
 
   const absolutePath = activeTextEditor.document.uri.path
-  const lineNumber = activeTextEditor.selection.start.line
+  const lineNumber = activeTextEditor.selection.start.line + 1
   const absolutePathWithLineNumber = `${absolutePath}:${lineNumber}`
   vscode.env.clipboard.writeText(absolutePathWithLineNumber)
   vscode.window.showInformationMessage(`${absolutePathWithLineNumber}`)
@@ -26,7 +26,7 @@ export function copyRelativePathWithLineNumber() {
 
   const absolutePath = activeTextEditor.document.uri.path
   const relativePath = absolutePath.split(`${workspace.name}/`)[1]
-  const lineNumber = activeTextEditor.selection.start.line
+  const lineNumber = activeTextEditor.selection.start.line + 1
   const relativePathWithLineNumber = `${relativePath}:${lineNumber}`
   vscode.env.clipboard.writeText(relativePathWithLineNumber)
   vscode.window.showInformationMessage(`${relativePathWithLineNumber}`)
