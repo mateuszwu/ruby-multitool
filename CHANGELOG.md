@@ -4,6 +4,12 @@ All notable changes to the "ruby-multitool" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.0.2]
+
+### Fixed
+
+- Fix RubyFileAnalyzer by replacing custom REGEXPs with TreeSitter
+
 ## [1.0.1]
 
 ### Fixed
