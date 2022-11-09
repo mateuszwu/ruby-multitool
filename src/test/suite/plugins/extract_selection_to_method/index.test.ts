@@ -5,7 +5,7 @@ import {
 } from '../../../../plugins/extract_selection_to_method'
 
 suite('#extractSelectionToPrivateMethod', () => {
-  test('extracts selected oneline text to a new private method', () => {
+  test('extracts selected oneline text to a new private method', async () => {
     const fileText = [
       'class DummyClass',
       '  def foo',
@@ -16,7 +16,7 @@ suite('#extractSelectionToPrivateMethod', () => {
     const selectedText = '\'baz\''
     const cursorPosition = new vscode.Position(2, 0)
 
-    const result = extractSelectionToPrivateMethod(fileText, cursorPosition, selectedText)
+    const result = await extractSelectionToPrivateMethod(fileText, cursorPosition, selectedText)
 
     assert.equal(
       result?.body.join('\n'),
@@ -34,7 +34,7 @@ suite('#extractSelectionToPrivateMethod', () => {
     )
   })
 
-  test('extracts selected multiline text to a new private method', () => {
+  test('extracts selected multiline text to a new private method', async () => {
     const fileText = [
       'class DummyClass',
       '  def foo(qui)',
@@ -55,7 +55,7 @@ suite('#extractSelectionToPrivateMethod', () => {
     ].join('\n')
     const cursorPosition = new vscode.Position(2, 0)
 
-    const result = extractSelectionToPrivateMethod(fileText, cursorPosition, selectedText)
+    const result = await extractSelectionToPrivateMethod(fileText, cursorPosition, selectedText)
 
     assert.equal(
       result?.body.join('\n'),

@@ -10,7 +10,7 @@ module Foo
       def eaz
         if true; 222 end
         if 4 == 4
-          555
+          555 if 3 > 4
           unless false; 666 end
           unless 6 == 5
             777
@@ -51,7 +51,7 @@ module Foo
         when false then 2000
         end
 
-        omg 5 = case 192==483; when 192==483 then 18932 end
+        omg5 = case 192==483; when 192==483 then 18932 end
 
         case 10923==23841; when 10923==23841 then 9812312 end
 

@@ -5,8 +5,8 @@ const PRIVATE_TEXT = 'private'
 const TAB_INDENTATION = 2
 const EXTRACT_METHOD_NAME = 'change_me!'
 
-export function extractSelectionToPrivateMethod(fileText: string, cursorPosition: vscode.Position, selectedText: string): RubyBlock | undefined{
-  const classRubyBlock = new RubyFileAnalyzer().getClassUnderCursorPosition(fileText, cursorPosition)
+export async function extractSelectionToPrivateMethod(fileText: string, cursorPosition: vscode.Position, selectedText: string): Promise<RubyBlock | undefined> {
+  const classRubyBlock = await new RubyFileAnalyzer().getClassUnderCursorPosition(fileText, cursorPosition)
   if (classRubyBlock !== undefined) {
     const privateMethodLine = classRubyBlock.body.find((line: string) => line.trim() === PRIVATE_TEXT)
 

@@ -1,10 +1,10 @@
 import * as vscode from 'vscode'
 import * as extractSelectionToPrivateMethodModule from '.'
 
-export function extractSelectionToPrivateMethod() {
+export async function extractSelectionToPrivateMethod() {
   const activeTextEditor = vscode.window.activeTextEditor
   if (activeTextEditor !== undefined) {
-    const classRubyBlock = extractSelectionToPrivateMethodModule.extractSelectionToPrivateMethod(
+    const classRubyBlock = await extractSelectionToPrivateMethodModule.extractSelectionToPrivateMethod(
       activeTextEditor.document.getText(),
       activeTextEditor.selection.active,
       activeTextEditor.document.getText(activeTextEditor.selection)
