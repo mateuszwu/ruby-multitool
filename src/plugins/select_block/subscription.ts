@@ -1,23 +1,23 @@
 import * as vscode from 'vscode'
 import { RubyFileAnalyzer, RubyBlock } from '.'
 
-export function selectAroundBlock() {
-  _selectAroundBlock((text, cursorPosition) => new RubyFileAnalyzer().getBlockUnderCursorPosition(text, cursorPosition))
+export function selectAroundBlock(context: vscode.ExtensionContext) {
+  _selectAroundBlock((text, cursorPosition) => new RubyFileAnalyzer().getBlockUnderCursorPosition(text, cursorPosition, context.extensionPath))
 }
 
-export function selectInsideBlock() {
-  _selectInsideBlock((text, cursorPosition) => new RubyFileAnalyzer().getBlockUnderCursorPosition(text, cursorPosition))
+export function selectInsideBlock(context: vscode.ExtensionContext) {
+  _selectInsideBlock((text, cursorPosition) => new RubyFileAnalyzer().getBlockUnderCursorPosition(text, cursorPosition, context.extensionPath))
 }
 
-export function selectAroundDefBlock() {
-  _selectAroundBlock((text, cursorPosition) => new RubyFileAnalyzer().getDefUnderCursorPosition(text, cursorPosition))
+export function selectAroundDefBlock(context: vscode.ExtensionContext) {
+  _selectAroundBlock((text, cursorPosition) => new RubyFileAnalyzer().getDefUnderCursorPosition(text, cursorPosition, context.extensionPath))
 }
 
-export function selectInsideDefBlock() {
-  _selectInsideBlock((text, cursorPosition) => new RubyFileAnalyzer().getDefUnderCursorPosition(text, cursorPosition))
+export function selectInsideDefBlock(context: vscode.ExtensionContext) {
+  _selectInsideBlock((text, cursorPosition) => new RubyFileAnalyzer().getDefUnderCursorPosition(text, cursorPosition, context.extensionPath))
 }
 
-function _selectAroundBlock(getBlockFunc: ( text: string, cursorPosition: vscode.Position) => Promise<RubyBlock | undefined>): void {
+function _selectAroundBlock(getBlockFunc: (text: string, cursorPosition: vscode.Position) => Promise<RubyBlock | undefined>): void {
   const activeTextEditor = vscode.window.activeTextEditor
   if (activeTextEditor !== undefined) {
     const cursorPosition = activeTextEditor.selection.active

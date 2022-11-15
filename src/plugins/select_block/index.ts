@@ -49,8 +49,8 @@ const BLOCK_TYPES = [
 ]
 
 export class RubyFileAnalyzer {
-  async getBlockUnderCursorPosition(text: string, cursorPosition: vscode.Position): Promise<RubyBlock | undefined> {
-    const tree = await this._analyze(text)
+  async getBlockUnderCursorPosition(text: string, cursorPosition: vscode.Position, extensionPath: string): Promise<RubyBlock | undefined> {
+    const tree = await this._analyze(text, extensionPath)
     const currentNode = tree.rootNode.descendantForPosition({
       row: cursorPosition.line,
       column: cursorPosition.character,
@@ -83,8 +83,8 @@ export class RubyFileAnalyzer {
     return this._convertBlockNodeToRubyBlock(blockNode, openingEndCharacterPosition, text)
   }
 
-  async getClassUnderCursorPosition(text: string, cursorPosition: vscode.Position): Promise<RubyBlock | undefined> {
-    const tree = await this._analyze(text)
+  async getClassUnderCursorPosition(text: string, cursorPosition: vscode.Position, extensionPath: string): Promise<RubyBlock | undefined> {
+    const tree = await this._analyze(text, extensionPath)
     const currentNode = tree.rootNode.descendantForPosition({
       row: cursorPosition.line,
       column: cursorPosition.character,
@@ -109,8 +109,8 @@ export class RubyFileAnalyzer {
     return this._convertBlockNodeToRubyBlock(blockNode, openingEndCharacterPosition, text)
   }
 
-  async getDefUnderCursorPosition(text: string, cursorPosition: vscode.Position): Promise<RubyBlock | undefined> {
-    const tree = await this._analyze(text)
+  async getDefUnderCursorPosition(text: string, cursorPosition: vscode.Position, extensionPath: string): Promise<RubyBlock | undefined> {
+    const tree = await this._analyze(text, extensionPath)
     const currentNode = tree.rootNode.descendantForPosition({
       row: cursorPosition.line,
       column: cursorPosition.character,
@@ -161,16 +161,16 @@ export class RubyFileAnalyzer {
     return block
   }
 
-  async _analyze(text: string): Promise<Parser.Tree> {
+  async _analyze(text: string, extensionPath: string): Promise<Parser.Tree> {
     try {
-      return this._generateTree(text)
+      return this._generateTree(text, extensionPath)
     } catch {
-      return this._generateTree(text)
+      return this._generateTree(text, extensionPath)
     }
   }
 
-  async _generateTree(text: string): Promise<Parser.Tree> {
-    const rubyWasmPath = 'src/plugins/select_block/parsers/tree-sitter-ruby.wasm'
+  async _generateTree(text: string, extensionPath: string): Promise<Parser.Tree> {
+    const rubyWasmPath = `${extensionPath}/dist/tree-sitter-ruby.wasm`
     const rubyLanguage = await Parser.Language.load(rubyWasmPath)
     const parser = new Parser()
     parser.setLanguage(rubyLanguage)

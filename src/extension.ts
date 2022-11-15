@@ -28,14 +28,14 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.copyAbsolutePathWithLineNumber', copyAbsolutePathWithLineNumber))
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.copyRelativePathWithLineNumber', copyRelativePathWithLineNumber))
 
-  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.selectAroundBlock', selectAroundBlock))
-  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.selectInsideBlock', selectInsideBlock))
-  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.selectAroundDefBlock', selectAroundDefBlock))
-  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.selectInsideDefBlock', selectInsideDefBlock))
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.selectAroundBlock', () => selectAroundBlock(context)))
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.selectInsideBlock', () => selectInsideBlock(context)))
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.selectAroundDefBlock', () => selectAroundDefBlock(context)))
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.selectInsideDefBlock', () => selectInsideDefBlock(context)))
 
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.invertSelectionDirection', invertSelectionDirection))
 
-  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.extractSelectionToPrivateMethod', extractSelectionToPrivateMethod))
+  context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.extractSelectionToPrivateMethod', () => extractSelectionToPrivateMethod(context)))
 
   context.subscriptions.push(vscode.commands.registerCommand('ruby-multitool.changeRubyBlockSyntax', changeRubyBlockSyntax))
 }

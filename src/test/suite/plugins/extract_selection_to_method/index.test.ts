@@ -15,8 +15,9 @@ suite('#extractSelectionToPrivateMethod', () => {
     ].join('\n')
     const selectedText = '\'baz\''
     const cursorPosition = new vscode.Position(2, 0)
+    const extensionPath = '.'
 
-    const result = await extractSelectionToPrivateMethod(fileText, cursorPosition, selectedText)
+    const result = await extractSelectionToPrivateMethod(fileText, cursorPosition, selectedText, extensionPath)
 
     assert.equal(
       result?.body.join('\n'),
@@ -54,8 +55,9 @@ suite('#extractSelectionToPrivateMethod', () => {
       '    end',
     ].join('\n')
     const cursorPosition = new vscode.Position(2, 0)
+    const extensionPath = '.'
 
-    const result = await extractSelectionToPrivateMethod(fileText, cursorPosition, selectedText)
+    const result = await extractSelectionToPrivateMethod(fileText, cursorPosition, selectedText, extensionPath)
 
     assert.equal(
       result?.body.join('\n'),

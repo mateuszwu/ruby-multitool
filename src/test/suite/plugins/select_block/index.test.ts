@@ -10,10 +10,12 @@ suite('#getDefUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(11, 11)
+    const extensionPath = '.'
 
     const result = await new RubyFileAnalyzer().getDefUnderCursorPosition(
       rubyFileText,
-      currentCursorPosition
+      currentCursorPosition,
+      extensionPath
     )
 
     assert.equal(result?.indentationLength, 6, 'Indentation')
@@ -35,8 +37,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(0, 0)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 0, 'Indentation')
     console.log('wyniki: ', result?.blockOpening)
@@ -56,15 +63,20 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(1, 2)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 2, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
       endCharacterPosition: 17,
       line: 1,
       startCharacterPosition: 2,
-      text: 'module Bar::Kaz'
+      text: 'module Bar::Kaz',
     })
     assert.equal(result?.body.length, 67, 'Body length')
     assert.equal(result?.body[0], '    class Fiz')
@@ -76,15 +88,20 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(2, 4)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 4, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
       endCharacterPosition: 13,
       line: 2,
       startCharacterPosition: 4,
-      text: 'class Fiz'
+      text: 'class Fiz',
     })
     assert.equal(result?.body.length, 58, 'Body length')
     assert.equal(result?.body[0], '      def qui')
@@ -96,8 +113,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(3, 6)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 6, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -116,8 +138,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(7, 6)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 6, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -136,8 +163,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(10, 8)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -156,8 +188,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(11, 8)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -176,8 +213,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(13, 10)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 10, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -196,8 +238,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(14, 10)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 10, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -216,8 +263,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(19, 15)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -236,8 +288,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(20, 15)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -256,8 +313,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(21, 14)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -276,8 +338,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(26, 15)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -296,8 +363,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(31, 8)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -316,8 +388,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(32, 10)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 10, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -336,8 +413,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(38, 15)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -356,8 +438,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(41, 15)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -376,8 +463,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(43, 8)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -396,8 +488,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(48, 15)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -416,8 +513,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(53, 16)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -436,8 +538,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(55, 8)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
@@ -456,8 +563,13 @@ suite('#getBlockUnderCursorPosition', () => {
       'utf-8'
     )
     const currentCursorPosition = new vscode.Position(57, 8)
+    const extensionPath = '.'
 
-    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(rubyFileText, currentCursorPosition)
+    const result = await new RubyFileAnalyzer().getBlockUnderCursorPosition(
+      rubyFileText,
+      currentCursorPosition,
+      extensionPath
+    )
 
     assert.equal(result?.indentationLength, 8, 'Indentation')
     assert.deepEqual(result?.blockOpening, {
